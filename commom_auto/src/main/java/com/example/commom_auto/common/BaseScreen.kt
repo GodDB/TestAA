@@ -56,9 +56,7 @@ abstract class BaseScreen<SM : BaseScreenModel>(
 
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
-        lifecycle.addObserver(this)
-        lifecycle.addObserver(screenModel)
-
+        Log.e("godgod", "$this onCreate")
         lifecycleScope.launch {
             try {
                 CarSurfaceManager.addListener(surfaceCallback)
@@ -67,39 +65,59 @@ abstract class BaseScreen<SM : BaseScreenModel>(
                 CarSurfaceManager.removeListener(surfaceCallback)
             }
         }
+    }
 
+    override fun onStart(owner: LifecycleOwner) {
+        super.onStart(owner)
+        Log.e("godgod", "$this onStart")
+    }
+
+    override fun onResume(owner: LifecycleOwner) {
+        super.onResume(owner)
+        Log.e("godgod", "$this onResume")
+    }
+
+    override fun onPause(owner: LifecycleOwner) {
+        super.onPause(owner)
+        Log.e("godgod", "$this onPause")
+    }
+
+    override fun onStop(owner: LifecycleOwner) {
+        super.onStop(owner)
+        Log.e("godgod", "$this onStop")
     }
 
     override fun onDestroy(owner: LifecycleOwner) {
         lifecycleScope.cancel()
         super.onDestroy(owner)
+        Log.e("godgod", "$this onDestroy")
     }
 
     open fun onSurfaceAvailable(surfaceContainer: SurfaceContainer) {
-        Log.e("godgod", "onSurfaceAvailable")
+        Log.e("godgod", "$this onSurfaceAvailable")
     }
 
     open fun onSurfaceDestroyed(surfaceContainer: SurfaceContainer) {
-        Log.e("godgod", "onSurfaceDestroyed")
+        Log.e("godgod", "$this onSurfaceDestroyed")
     }
 
     open fun onVisibleAreaChanged(visibleArea: Rect) {
-        Log.e("godgod", "onVisibleAreaChanged ${visibleArea}")
+        Log.e("godgod", "$this onVisibleAreaChanged ${visibleArea}")
     }
 
     open fun onStableAreaChanged(stableArea: Rect) {
-        Log.e("godgod", "onStableAreaChanged ${stableArea}")
+        Log.e("godgod", "$this onStableAreaChanged ${stableArea}")
     }
 
     open fun onFling(velocityX: Float, velocityY: Float) {
-        Log.e("godgod", "onFling ${velocityX}  ${velocityY}")
+        Log.e("godgod", "$this onFling ${velocityX}  ${velocityY}")
     }
 
     open fun onScale(focusX: Float, focusY: Float, scaleFactor: Float) {
-        Log.e("godgod", "onScale ${focusX}  ${focusY} ${scaleFactor}")
+        Log.e("godgod", "$this onScale ${focusX}  ${focusY} ${scaleFactor}")
     }
 
     open fun onScroll(distanceX: Float, distanceY: Float) {
-        Log.e("godgod", "onScroll ${distanceX}  ${distanceY}")
+        Log.e("godgod", "$this onScroll ${distanceX}  ${distanceY}")
     }
 }
