@@ -43,6 +43,7 @@ android {
 dependencies {
     implementation(project(":home"))
     implementation(project(":auto"))
+    implementation(project(":commom_auto"))
 }
 
 dependencies {
