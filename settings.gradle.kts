@@ -15,3 +15,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "TestAndroidAuto"
 include(":app")
+include(":home")
+include(":commom_auto")
+include(":mylibrary")
+include(":auto")
